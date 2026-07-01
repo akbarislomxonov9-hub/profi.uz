@@ -1,0 +1,479 @@
+/* Rang o'zgaruvchilari (Light Mode - Standart) */
+:root {
+    --bg-main: #f1f5f9;
+    --bg-card: #ffffff;
+    --text-color: #0f172a;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --warning-color: #d97706;
+    --warning-hover: #b45309;
+    --success-color: #10b981;
+    --accent-bg: #f8fafc;
+    --shadow-style: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+/* Qorong'u rejim ranglari (Dark Mode faollashganda) */
+[data-theme="dark"] {
+    --bg-main: #0f172a;
+    --bg-card: #1e293b;
+    --text-color: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+    --primary-color: #3b82f6;
+    --primary-hover: #60a5fa;
+    --accent-bg: #1e293b;
+    --shadow-style: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Umumiy Sozlamalar */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-color);
+    padding-bottom: 40px;
+}
+
+/* Header qismi */
+header {
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-style);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+.logo span {
+    color: var(--text-color);
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.location-badge {
+    background-color: var(--bg-main);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.theme-btn {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Banner (Hero) */
+.hero-section {
+    text-align: center;
+    padding: 45px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-section h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.hero-section p {
+    color: var(--text-muted);
+    font-size: 16px;
+}
+
+/* Filtrlash tugmalari (Mobil telefonlarda yonga skroll bo'ladi) */
+.category-filter-container {
+    max-width: 1200px;
+    margin: 10px auto 30px auto;
+    padding: 0 5%;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Skrollbarni yashirish (toza ko'rinish uchun) */
+.category-filter-container::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-btn {
+    background-color: var(--bg-card);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: var(--shadow-style);
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+}
+
+/* Kartochkalar Grid tizimi */
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.experts-grid {
+    display: grid;
+    /* Avtomatik sig'adigan responsiv ustunlar */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* Kartochka dizayni */
+.expert-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow-style);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.expert-profile {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    flex-shrink: 0; /* Rasm telefonda siqilib qolmasligi uchun */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.bg-purple { background-color: #8b5cf6; }
+.bg-blue { background-color: #3b82f6; }
+.bg-green { background-color: #10b981; }
+.bg-orange { background-color: #f59e0b; }
+
+.profile-details h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.badge {
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 2px;
+}
+
+.badge.verified { background-color: rgba(16, 185, 129, 0.15); color: #10b981; }
+.badge.top-rated { background-color: rgba(245, 158, 11, 0.15); color: #d97706; }
+
+.specialty-tag {
+    font-size: 13px;
+    color: var(--text-muted);
+    display: block;
+}
+
+.rating-row {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.stars { color: #f59e0b; font-size: 15px; }
+.reviews-count { font-size: 12px; color: var(--text-muted); }
+
+.comment-preview {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+    background-color: var(--bg-main);
+    padding: 10px;
+    border-radius: 6px;
+    border-left: 3px solid var(--primary-color);
+}
+
+/* Ingliz tili o'quvchilari va mahorat bo'limi */
+.student-info-box {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-size: 11px;
+    padding: 6px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.skills-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.skill-pill {
+    background-color: var(--bg-main);
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.skill-pill span {
+    display: block;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Tugmalar */
+.card-footer {
+    padding: 0 20px 20px 20px;
+}
+
+.action-btn {
+    width: 100%;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-primary { background-color: var(--primary-color); color: #ffffff; }
+.btn-primary:hover { background-color: var(--primary-hover); }
+
+.btn-warning { background-color: #f59e0b; color: #ffffff; }
+.btn-warning:hover { background-color: #d97706; }
+
+/* Modal Oyna (Pop-up) */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 15px; /* Mobil ekran chetiga yopishib qolmasligi uchun */
+}
+
+.modal-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-window {
+    background-color: var(--bg-card);
+    padding: 25px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: var(--shadow-style);
+    position: relative;
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.modal-window h3 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-size: 18px;
+    padding-right: 20px;
+}
+
+.info-row {
+    margin-bottom: 15px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column; /* Mobilda matn sig'sa chiroyli chiqishi uchun */
+    gap: 4px;
+}
+
+/* Katta ekranlarda ma'lumotlarni yonma-yon qilish */
+@media (min-width: 400px) {
+    .info-row {
+        flex-direction: row;
+    }
+    .info-row strong {
+        width: 110px;
+        flex-shrink: 0;
+    }
+}
+
+#modalPhone {
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.modal-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    border-top: 1px dashed var(--border-color);
+    padding-top: 12px;
+    margin-top: 15px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    font-size: 13px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+}
+
+
+/* ========================================================
+   MEDIA QUERIES (RESPONSIVLIKNI TA'MINLOVCHI MAXSUS KODLAR)
+   ======================================================== */
+
+/* 1. Planshetlar va o'rta hajmdagi ekranlar uchun (Katta telefonlar va iPad) */
+@media (max-width: 768px) {
+    header {
+        padding: 12px 4%;
+    }
+    
+    .hero-section {
+        padding: 30px 15px;
+    }
+
+    .hero-section h2 {
+        font-size: 26px; /* Matn biroz kichrayadi */
+    }
+
+    .hero-section p {
+        font-size: 14px;
+    }
+}
+
+/* 2. Kichik smartfonlar uchun (Ekran o'lchami 520px dan kichik bo'lganda) */
+@media (max-width: 520px) {
+    .header-container {
+        flex-direction: column; /* Logotip va tugmalar ustma-ust tushadi */
+        gap: 12px;
+        text-align: center;
+    }
+
+    .header-controls {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .location-badge {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .theme-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .hero-section h2 {
+        font-size: 22px;
+    }
+
+    .category-filter-container {
+        padding: 0 4%;
+        margin-bottom: 20px;
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 13px; /* Tugmalar ixchamlashadi */
+    }
+
+    .experts-grid {
+        grid-template-columns: 1fr; /* Telefon ekranida kartochkalar 1 qatordan to'liq joylashadi */
+        gap: 20px;
+    }
+
+    .card-body {
+        padding: 15px; /* Ichki bo'shliq kamayadi */
+    }
+
+    .avatar {
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
+    }
+
+    .profile-details h3 {
+        font-size: 15px;
+    }
+}

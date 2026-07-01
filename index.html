@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profi.uz - Premium Mutaxassislar Platformasi</title>
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%232563EB'/%3E%3Cpath d='M14 28V12H21C24.3137 12 27 14.6863 27 18C27 21.3137 24.3137 24 21 24H18V28H14ZM18 20H21C22.1046 20 23 19.1046 23 18C23 16.8954 22.1046 16 21 16H18V20Z' fill='white'/%3E%3C/svg%3E">
+
+    <style>
+        /* Premium Dizayn O'zgaruvchilari */
+        :root {
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --primary: #2563eb;
+            --primary-glow: rgba(37, 99, 235, 0.15);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --bg-main: #0b0f19;
+            --bg-card: #151f32;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-color: #223147;
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.25);
+            --shadow-md: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Umumiy stillar */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family);
+            transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                        color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                        border-color 0.3s ease, 
+                        box-shadow 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            padding-bottom: 60px;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: rgba(var(--bg-card), 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .location-tag {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .theme-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 13px;
+            box-shadow: 0 4px 14px var(--primary-glow);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px var(--primary-glow);
+        }
+
+        /* Hero Bo'limi */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            background: linear-gradient(to right, var(--primary), var(--success));
+            
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        /* Boshqaruv paneli */
+        .controls-panel {
+            max-width: 1400px;
+            margin: 0 auto 40px auto;
+            padding: 0 5%;
+        }
+
+        .search-wrapper {
+            max-width: 600px;
+            margin: 0 auto 24px auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 24px 16px 50px;
+            border-radius: 30px;
+            border: 2px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-main);
+            font-size: 16px;
+            font-weight: 500;
+            outline: none;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--primary-glow);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: var(--text-muted);
+        }
+
+        .category-scroll {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 10px 5px;
+            scrollbar-width: none;
+            justify-content: center;
+        }
+
+        .category-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-chip {
+            background: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            white-space: nowrap;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .filter-chip.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 8px 20px var(--primary-glow);
+        }
+
+        /* Grid Tizimi */
+        .grid-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .experts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        /* Kartochkalar */
+        .expert-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expert-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.1), 0 10px 15px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-header {
+            padding: 24px 24px 15px 24px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            flex-shrink: 0;
+            background: #e2e8f0;
+        }
+
+        .header-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .expert-name {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .verify-badge {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+            margin-top: 2px;
+        }
+
+        .card-body {
+            padding: 0 24px 24px 24px;
+            flex-grow: 1;
+        }
+
+        .spec-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .rating-box {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+
+        .star-icons { color: var(--warning); font-size: 14px; }
+        .rating-text { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+
+        .english-metrics {
+            background: var(--bg-main);
+            border-radius: var(--radius-md);
+            padding: 12px;
+            margin-bottom: 14px;
+            border: 1px solid var(--border-color);
+        }
+
+        .metrics-headline {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .skills-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            text-align: center;
+        }
+
+        .skill-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 6px 4px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .skill-box span {
+            display: block;
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 11px;
+            margin-top: 2px;
+        }
+
+        .comment-box {
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-muted);
+            font-style: italic;
+            background: var(--bg-main);
+            padding: 12px;
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+
+        .card-footer {
+            padding: 0 24px 24px 24px;
+        }
+
+        .btn-call {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .btn-blue { background: var(--primary); box-shadow: 0 4px 12px var(--primary-glow); }
+        .btn-blue:hover { opacity: 0.9; }
+        .btn-orange { background: var(--warning); box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); }
+        .btn-orange:hover { opacity: 0.9; }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 2000; opacity: 0; pointer-events: none;
+        }
+
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+
+        .modal-card {
+            background: var(--bg-card);
+            padding: 32px;
+            border-radius: var(--radius-lg);
+            width: 90%; max-width: 440px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+            transform: scale(0.95);
+        }
+
+        .modal-overlay.active .modal-card { transform: scale(1); }
+
+        .close-btn {
+            position: absolute; top: 20px; right: 20px;
+            background: var(--bg-main); border: none;
+            width: 32px; height: 32px; border-radius: 50%;
+            cursor: pointer; font-size: 18px; color: var(--text-muted);
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .modal-title { font-size: 22px; font-weight: 800; margin-bottom: 24px; color: var(--primary); }
+        
+        .info-block { display: flex; flex-direction: column; gap: 16px; margin-bottom: 20px; }
+        .info-item { display: flex; flex-direction: column; gap: 4px; }
+        .info-item label { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+        .info-item p { font-size: 16px; font-weight: 600; }
+        .info-item a { font-size: 18px; font-weight: 800; color: var(--primary); text-decoration: none; }
+
+        footer { text-align: center; padding: 40px; font-size: 14px; color: var(--text-muted); border-top: 1px solid var(--border-color); margin-top: 60px; }
+
+        /* RESPONSIVLIK */
+        @media (max-width: 1024px) {
+            .hero h2 { font-size: 36px; }
+            .category-scroll { justify-content: flex-start; overflow-x: auto; padding-left: 20px; padding-right: 20px; }
+            .controls-panel { padding: 0; }
+            .search-wrapper { padding: 0 20px; }
+        }
+
+        @media (max-width: 640px) {
+            header { padding: 14px 20px; }
+            .header-container { flex-direction: column; gap: 14px; }
+            .header-controls { width: 100%; justify-content: space-between; }
+            .hero { padding: 40px 20px 24px 20px; }
+            .hero h2 { font-size: 28px; }
+            .hero p { font-size: 15px; }
+            .experts-grid { grid-template-columns: 1fr; gap: 20px; }
+            .modal-card { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="12" fill="url(#logoGradient)"/>
+                    <path d="M14 28V12H21C24.3137 12 27 14.6863 27 18C27 21.3137 24.3137 24 21 24H18V28H14ZM18 20H21C22.1046 20 23 19.1046 23 18C23 16.8954 22.1046 16 21 16H18V20Z" fill="white"/>
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#2563EB"/>
+                            <stop offset="1" stop-color="#10B981"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h1 style="font-size: 26px; font-weight: 800; letter-spacing: -0.5px; margin: 0; display: flex; align-items: center;">
+                    <span style="color: var(--primary);">Profi</span><span style="color: var(--text-main);">.uz</span>
+                </h1>
+            </div>
+            <div class="header-controls">
+                <div class="location-tag">📍 O'zbekiston bo'ylab (500+ Top Ekspertlar)</div>
+                <button class="theme-btn" id="themeBtn">🌙 Qorong'u rejim</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h2>Eng Kuchli Ekspertlar Markazi</h2>
+        <p>Psixologlar, Xalqaro darajadagi Ingliz tili va IT ustozlari hamda O'zbekistondagi eng mohir uy ustalari yagona intellektual bazada.</p>
+    </section>
+
+    <section class="controls-panel">
+        <div class="search-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" class="search-input" placeholder="Ism, soha yoki viloyat bo'yicha qidirish...">
+        </div>
+        <div class="category-scroll">
+            <button class="filter-chip active" onclick="applyFilter('all', this)">Barcha mutaxassislar (500)</button>
+            <button class="filter-chip" onclick="applyFilter('psixolog', this)">Psixologlar</button>
+            <button class="filter-chip" onclick="applyFilter('english', this)">Ingliz tili ustozlari</button>
+            <button class="filter-chip" onclick="applyFilter('it', this)">IT Ustozlari</button>
+            <button class="filter-chip" onclick="applyFilter('usta', this)">Professional Ustalar</button>
+        </div>
+    </section>
+
+    <main class="grid-container">
+        <div class="experts-grid" id="containerGrid"></div>
+    </main>
+
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-card">
+            <button class="close-btn" onclick="toggleModal(false)">&times;</button>
+            <h3 class="modal-title" id="mName">Ekspert ma'lumotlari</h3>
+            <div class="info-block">
+                <div class="info-item">
+                    <label>Aloqa telefoni</label>
+                    <a id="mPhone" href="tel:">raqam</a>
+                </div>
+                <div class="info-item">
+                    <label>Ish faoliyati manzili</label>
+                    <p id="mAddress">manzil</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Profi.uz — Dunyo standartidagi milliy platforma. Barcha huquqlar himoyalangan.</p>
+    </footer>
+
+    <script>
+        const ismlarErkak = ['Jasur', 'Sardor', 'Anvar', 'Olimjon', 'Bekzod', 'Diyor', 'Rustam', 'Farhod', 'Sirojiddin', 'Bobur', 'Umid', 'Ilyos', 'Sanjar', 'Jamshid'];
+        const ismlarAyol = ['Malika', 'Dilnoza', 'Zilola', 'Madina', 'Shirin', 'Guli', 'Aziza', 'Kamola', 'Nigora', 'Feruza', 'Shahnoza', 'Sevara', 'Lola'];
+        const familiyalar = ['Karimov', 'Rahimov', 'Alimov', 'Umarov', 'Nazarov', 'Tursunov', 'Sultonov', 'Mahmudov', 'Xasanov', 'Abdulayev', 'Sadullayev', 'Usmanov'];
+        const viloyatlar = ['Toshkent sh.', 'Samarqand', 'Andijon', 'Farg\'ona', 'Buxoro', 'Namangan', 'Xorazm', 'Qashqadaryo', 'Surxondaryo', 'Navoiy', 'Jizzax'];
+
+        const spPsixolog = ['Klinik psixolog', 'Oilaviy maslahatchi', 'Bolalar psixologi', 'Koginitiv terapevt', 'Psixoanalitik'];
+        const spEnglish = ['IELTS Instructor (8.5)', 'CEFR Expert (C1)', 'Business English Coach', 'General English Teacher', 'Spoken English Guru'];
+        const spIT = ['Senior Full-Stack Developer', 'Python AI Mentor', 'Mobile (Flutter) Expert', 'UI/UX Designer', 'Cybersecurity Instructor'];
+        const spUsta = ['Professional Elektrik', 'Santexnika va Isitish ustasi', 'Konditsioner Sozlovchisi', 'Maishiy Texnika Ustasi', 'Mebel Jihozlovchisi'];
+
+        const sharhlar = [
+            "Juda ham mamnun bo'ldim, ishingizga baraka!",
+            "O'z ishining haqiqiy ustasi ekan, darhol muammoni hal qildi.",
+            "Dars o'tish uslubi ajoyib, qisqa muddatda natijaga erishdik.",
+            "Katta rahmat! Muomala va professional yondashuv eng yuqori darajada.",
+            "Tavsiya qilaman, narxlari ham hamyonbop va sifati zo'r."
+        ];
+
+        const database = [];
+        const categories = ['psixolog', 'english', 'it', 'usta'];
+
+        for(let i = 1; i <= 500; i++) {
+            let cat = categories[i % 4];
+            let gender = Math.random() > 0.5 ? 'male' : 'female';
+            let ism = gender === 'male' ? ismlarErkak[Math.floor(Math.random()*ismlarErkak.length)] : ismlarAyol[Math.floor(Math.random()*ismlarAyol.length)];
+            let fam = familiyalar[Math.floor(Math.random()*familiyalar.length)];
+            if(gender === 'female') fam += 'a';
+
+            let viloyat = viloyatlar[Math.floor(Math.random()*viloyatlar.length)];
+            let sharh = sharhlar[Math.floor(Math.random()*sharhlar.length)];
+            let reyting = (4.5 + Math.random() * 0.5).toFixed(1);
+            let sharhSoni = Math.floor(40 + Math.random() * 300);
+            
+            let mutaxassislik = '';
+            let btnText = 'Qabulga yozilish';
+            let btnClass = 'btn-blue';
+            
+            let imgId = Math.floor(Math.random() * 70);
+            let profilePic = `https://randomuser.me/api/portraits/${gender === 'male' ? 'men' : 'women'}/${imgId}.jpg`;
+
+            if(cat === 'psixolog') { mutaxassislik = spPsixolog[Math.floor(Math.random()*spPsixolog.length)]; }
+            else if(cat === 'english') { mutaxassislik = spEnglish[Math.floor(Math.random()*spEnglish.length)]; btnText = 'Darsga yozilish'; }
+            else if(cat === 'it') { mutaxassislik = spIT[Math.floor(Math.random()*spIT.length)]; btnText = 'Kursga qo\'shilish'; }
+            else if(cat === 'usta') { mutaxassislik = spUsta[Math.floor(Math.random()*spUsta.length)]; btnText = '📞 Ustani chaqirish'; btnClass = 'btn-orange'; }
+
+            database.push({
+                id: i,
+                name: `${ism} ${fam}`,
+                category: cat,
+                specialty: mutaxassislik,
+                location: `${viloyat}, Markaziy hudud`,
+                rating: reyting,
+                reviews: sharhSoni,
+                comment: sharh,
+                image: profilePic,
+                phone: `+998 (${90 + Math.floor(Math.random()*9)}) ${100 + Math.floor(Math.random()*899)}-${10 + Math.floor(Math.random()*89)}-${10 + Math.floor(Math.random()*89)}`,
+                btnText: btnText,
+                btnClass: btnClass
+            });
+        }
+
+        const grid = document.getElementById('containerGrid');
+
+        function renderCards(dataList) {
+            grid.innerHTML = '';
+            if(dataList.length === 0) {
+                grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 40px; font-weight: 600;">Hech qanday mutaxassis topilmadi.</div>`;
+                return;
+            }
+            
+            dataList.forEach(item => {
+                let metricsHtml = '';
+                if(item.category === 'english') {
+                    metricsHtml = `
+                        <div class="english-metrics">
+                            <div class="metrics-headline">O'quvchilar ko'rsatkichi (Skills)</div>
+                            <div class="skills-row">
+                                <div class="skill-box">Reading<span>7.5+</span></div>
+                                <div class="skill-box">Speaking<span>Fluent</span></div>
+                                <div class="skill-box">Writing<span>7.0+</span></div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                let card = document.createElement('div');
+                card.className = 'expert-card';
+                card.innerHTML = `
+                    <div>
+                        <div class="card-header">
+                            <img class="profile-img" src="${item.image}" alt="${item.name}" loading="lazy">
+                            <div class="header-meta">
+                                <h3 class="expert-name">${item.name}</h3>
+                                <span class="verify-badge">✓ Top mutaxassis</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="spec-title">${item.specialty}</div>
+                            <div class="rating-box">
+                                <span class="star-icons">★★★★★</span>
+                                <span class="rating-text">${item.rating} (${item.reviews} ta sharh)</span>
+                            </div>
+                            ${metricsHtml}
+                            <div class="comment-box">"${item.comment}"</div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-call ${item.btnClass}" onclick="openContact(${item.id})">${item.btnText}</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        renderCards(database);
+
+        let currentFilter = 'all';
+        function applyFilter(cat, btn) {
+            currentFilter = cat;
+            document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            runSearchAndFilter();
+        }
+
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', runSearchAndFilter);
+
+        function runSearchAndFilter() {
+            let query = searchInput.value.toLowerCase();
+            let filtered = database.filter(item => {
+                let matchCat = currentFilter === 'all' || item.category === currentFilter;
+                let matchQuery = item.name.toLowerCase().includes(query) || 
+                                 item.specialty.toLowerCase().includes(query) || 
+                                 item.location.toLowerCase().includes(query);
+                return matchCat && matchQuery;
+            });
+            renderCards(filtered);
+        }
+
+        const modal = document.getElementById('contactModal');
+        const mName = document.getElementById('mName');
+        const mPhone = document.getElementById('mPhone');
+        const mAddress = document.getElementById('mAddress');
+
+        // ID bo'yicha ma'lumotlarni topish va modal oynani ochish funksiyasi
+        function openContact(id) {
+            const item = database.find(x => x.id === id);
+            if (!item) return;
+            
+            mName.textContent = item.name;
+            mPhone.textContent = item.phone;
+            mPhone.setAttribute('href', `tel:${item.phone}`);
+            mAddress.textContent = item.location;
+            toggleModal(true);
+        }
+
+        function toggleModal(status) {
+            if(status) modal.classList.add('active');
+            else modal.classList.remove('active');
+        }
+
+        modal.addEventListener('click', (e) => { if(e.target === modal) toggleModal(false); });
+
+        const themeBtn = document.getElementById('themeBtn');
+        const html = document.documentElement;
+
+        themeBtn.addEventListener('click', () => {
+            if(html.getAttribute('data-theme') === 'light') {
+                html.setAttribute('data-theme', 'dark');
+                themeBtn.textContent = '☀️ Yorug\' rejim';
+            } else {
+                html.setAttribute('data-theme', 'light');
+                themeBtn.textContent = '🌙 Qorong\'u rejim';
+            }
+        });
+    </script>
+</body>
+</html>
